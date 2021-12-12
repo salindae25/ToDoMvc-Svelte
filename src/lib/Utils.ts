@@ -64,3 +64,8 @@ export function filterTodo(todos: Todo[], type = 'all'): Todo[] {
 	}
 	return todos;
 }
+
+export function retrieveValueFromLocalStorage(namespace: string): any {
+	const store = localStorage.getItem(namespace);
+	return (store && JSON.parse(store)) || [];
+}

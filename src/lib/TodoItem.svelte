@@ -71,8 +71,14 @@
 	})}
 >
 	<div class="view">
-		<input class="toggle" type="checkbox" checked={todo.completed} on:change={onToggle} />
-		<label on:dblclick={handleEdit}>
+		<input
+			class="toggle"
+			id="toggle-item"
+			type="checkbox"
+			checked={todo.completed}
+			on:change={onToggle}
+		/>
+		<label for="toggle-item" on:dblclick={handleEdit}>
 			{todo.title}
 		</label>
 		<button class="destroy" on:click={onDestroy} />
