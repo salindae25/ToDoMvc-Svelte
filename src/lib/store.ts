@@ -2,13 +2,16 @@ import { writable } from 'svelte/store';
 import type { Todo } from '$lib/types';
 import { retrieveValueFromLocalStorage } from '$lib/Utils';
 
-const INITIAL_STATE = retrieveValueFromLocalStorage('todoState') || [];
+const INITIAL_STATE = [];
 
 function CreateTodoStore() {
 	const { subscribe, set, update } = writable(INITIAL_STATE);
 
 	const updateLocalStorage = (data) => {
 		localStorage.setItem('todoState', JSON.stringify(data));
+	};
+	const setInitialValue = () => {
+		set(retrieveValueFromLocalStorage('todoState'));
 	};
 	const addToStore = (data) => {
 		update((todos) => {
@@ -39,7 +42,8 @@ function CreateTodoStore() {
 		subscribe,
 		addToStore,
 		mutateStore,
-		deleteFromStore
+		deleteFromStore,
+		setInitialValue
 	};
 }
 

@@ -80,6 +80,7 @@
 	}
 	onMount(() => {
 		window.addEventListener('hashchange', setActiveState);
+		todos.setInitialValue();
 	});
 
 	onDestroy(() => {
@@ -99,7 +100,6 @@
 			placeholder="What needs to be done?"
 			bind:value={newTodo}
 			on:keydown={handleNewTodoKeyDown}
-			autoFocus={true}
 		/>
 	</header>
 	<section class="main">
@@ -110,7 +110,7 @@
 			onChange={toggleAll}
 			checked={activeTodoCount === 0}
 		/>
-		<label htmlFor="toggle-all" />
+		<label for="toggle-all" />
 		<ul class="todo-list">
 			{#each shownTodos as todo, i}
 				<TodoItem
