@@ -9,6 +9,7 @@
 	import TodoItem from '$lib/TodoItem.svelte';
 	import type { Todo } from '$lib/types';
 	import { filterTodo, findActiveState, TODO_STATES, uuid } from '$lib/Utils';
+	import { todos } from '$lib/store';
 
 	const INITAIL_TODO: Todo = {
 		id: uuid(),
@@ -17,24 +18,20 @@
 	};
 	const ENTER_KEY = 13;
 
-	let todos: Todo[] = [];
 	let activeTodoCount = 0;
 	let completedCount = 0;
 	let nowShowing = findActiveState(location);
 	let newTodo = '';
 	let editing = null;
-	$: activeTodoCount = todos.filter((todo) => !todo.completed).length;
-	$: completedCount = todos.filter((todo) => todo.completed).length;
+	$: activeTodoCount = $todos.filter((todo) => !todo.completed).length;
+	$: completedCount = $todos.filter((todo) => todo.completed).length;
 
 	function addTodo(todoTitle: string) {
-		todos = [
-			...todos,
-			{
-				id: uuid(),
-				title: todoTitle,
-				completed: false
-			}
-		];
+		todos.addToStore({
+			id: uuid(),
+			title: todoTitle,
+			completed: false
+		});
 	}
 
 	function handleNewTodoKeyDown(event) {
@@ -53,22 +50,20 @@
 
 	function toggleAll(event) {
 		var checked = event.target.checked;
-		todos = todos.map((todo) => ({ ...todo, completed: checked }));
+		$todos.map((todo) => todos.mutateStore({ ...todo, completed: checked }));
 	}
 
 	function clearCompleted() {
-		todos = todos.filter((todo) => !todo.completed);
+		$todos.filter((todo) => !todo.completed);
 	}
 	function toggle(task: Todo) {
-		todos = todos.map((todo) =>
-			todo.id !== task.id ? todo : { ...task, completed: !task.completed }
-		);
+		todos.mutateStore({ ...task, completed: !task.completed });
 	}
 	function cancel() {
 		editing = null;
 	}
 	function destroy(task: Todo) {
-		todos = todos.filter((todo) => todo.id !== task.id);
+		todos.deleteFromStore(task);
 	}
 	function edit(todo: Todo) {
 		editing = todo.id;
@@ -77,7 +72,7 @@
 		const {
 			detail: { text }
 		} = e;
-		todos = todos.map((todo) => (todo.id !== task.id ? todo : { ...task, title: text }));
+		todos.mutateStore({ ...task, title: text });
 		editing = null;
 	}
 	function setActiveState(e) {
@@ -92,7 +87,7 @@
 	});
 	let shownTodos = [];
 	$: {
-		shownTodos = filterTodo(todos, nowShowing);
+		shownTodos = filterTodo($todos, nowShowing);
 	}
 </script>
 
