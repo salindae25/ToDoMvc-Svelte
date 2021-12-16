@@ -16,24 +16,7 @@
 		<strong>{count}</strong>
 		{activeTodoWord} left
 	</span>
-	<ul class="filters">
-		<li>
-			<a href="#" class={classNames({ selected: nowShowing === TODO_STATES.ALL_TODOS })}> All </a>
-		</li>
-		<li>
-			<a href="#active" class={classNames({ selected: nowShowing === TODO_STATES.ACTIVE_TODOS })}>
-				Active
-			</a>
-		</li>
-		<li>
-			<a
-				href="#completed"
-				class={classNames({ selected: nowShowing === TODO_STATES.COMPLETED_TODOS })}
-			>
-				Completed
-			</a>
-		</li>
-	</ul>
+
 	{#if completedCount > 0}
 		<button class="clear-completed" on:click={onClearCompleted}> Clear completed </button>
 	{/if}

@@ -53,9 +53,9 @@
 			checked={todo.completed}
 			on:change={onToggle}
 		/>
-		<label for={`toggle-item-${todo.id}`} on:dblclick={handleEdit}>
-			{todo.title}
-		</label>
+		<label for={`toggle-item-${todo.id}`} />
+
+		<span on:dblclick={handleEdit}>{todo.title}</span>
 		<button class="destroy" on:click={onDestroy} />
 	</div>
 	<input
