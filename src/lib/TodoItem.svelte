@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Input from '$lib/Input.svelte';
 	import type { Todo } from '$lib/types';
 	import { classNames } from '$lib/Utils';
 	import { createEventDispatcher } from 'svelte';
@@ -37,6 +38,9 @@
 		dispatch('cancel');
 	}
 	let editText;
+	let isFocused = false;
+	const onFocus = () => (isFocused = true);
+	const onBlur = () => (isFocused = false);
 </script>
 
 <li
@@ -58,8 +62,8 @@
 		<span on:dblclick={handleEdit}>{todo.title}</span>
 		<button class="destroy" on:click={onDestroy} />
 	</div>
-	<input
-		class="edit"
+	<Input
+		className="edit"
 		value={editText}
 		on:blur={handleSubmit}
 		on:change={handleChange}

@@ -99,7 +99,7 @@
 		<h1>todo</h1>
 		<input
 			class="new-todo"
-			placeholder="What needs to be done?"
+			placeholder="Create a new todo..."
 			bind:value={newTodo}
 			on:keydown={handleNewTodoKeyDown}
 		/>

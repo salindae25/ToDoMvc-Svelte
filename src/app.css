@@ -57,9 +57,8 @@ body {
 }
 
 .todoapp {
-	margin: 10px auto 40px;
+	margin: clamp(10px, 8vw, 220px) auto 40px;
 	max-width: 550px;
-
 	position: relative;
 }
 
@@ -164,11 +163,11 @@ body {
 
 .todo-list li.editing .edit {
 	display: block;
-	width: 506px;
+	width: calc(100% - 44px);
 	height: 50px;
 	padding: 12px 16px;
 	margin: 0 0 0 43px;
-	box-shadow: inset 1px 0px 7px -3px hsl(236, 9%, 61%);
+	/* box-shadow: inset 1px 0px 7px -3px hsl(236, 9%, 61%); */
 	box-sizing: border-box;
 }
 
@@ -275,7 +274,6 @@ body {
 	justify-content: space-between;
 	text-align: center;
 	align-items: center;
-	border-top: 1px solid #e6e6e6;
 }
 
 .todo-count {
@@ -286,19 +284,38 @@ body {
 .todo-count strong {
 	font-weight: 300;
 }
+.filters {
+	position: fixed;
+	max-width: calc(100vw - 20px);
+	margin: 20px 0;
+	padding: 0 40px;
+	list-style: none;
+	transform: translate(50%, 50%);
+	right: 50vw;
+	bottom: 200px;
+	background-image: var(--input-bg-color);
+	color: var(--text-secondary-color);
+	height: 50px;
+	font-size: 17px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	border-radius: 4px;
+	box-shadow: 6px -14px 22px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
 
 .filters {
 	position: fixed;
-	max-width: 550px;
-	margin: 0;
+	max-width: calc(100vw - 20px);
+	margin: 20px 0;
 	padding: 0 40px;
 	list-style: none;
-	right: 0;
+	transform: translate(50%, 50%);
+	right: 50vw;
 	bottom: 60px;
-	left: calc(100vh - 600px);
 	background-image: var(--input-bg-color);
 	color: var(--text-secondary-color);
-	margin-top: 20px;
 	height: 50px;
 	font-size: 17px;
 	font-weight: 700;
@@ -344,6 +361,33 @@ html .clear-completed:active {
 .clear-completed:hover {
 	text-decoration: underline;
 }
+
+@media screen and (max-width: 375px) {
+	.todoapp {
+		margin: 10px auto 40px;
+	}
+	.filters {
+		position: fixed;
+		max-width: calc(100vw - 20px);
+		margin: 20px 0;
+		padding: 0 40px;
+		list-style: none;
+		transform: translate(50%, 50%);
+		right: 50vw;
+		bottom: 60px;
+		background-image: var(--input-bg-color);
+		color: var(--text-secondary-color);
+		height: 50px;
+		font-size: 17px;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		border-radius: 4px;
+		box-shadow: 6px -14px 22px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+	}
+}
+
 /* 
 .info {
 	margin: 65px auto 0;

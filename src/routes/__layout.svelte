@@ -17,6 +17,7 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 		background: url('/bg-desktop-light.jpg') no-repeat;
+		background-size: contain;
 	}
 	@media (max-width: 375px) {
 		main {
