@@ -43,6 +43,23 @@ body {
 	--chkbg: 280, 87%, 65%;
 	--chkfg: 0, 0%, 98%;
 	--filter-color: hsl(220, 98%, 61%);
+	--desktop-image: url('/bg-desktop-light.jpg');
+	--mobile-image: url('/bg-mobile-light.jpg');
+}
+body.dark-mode {
+	--primary-bg-color: hsl(235, 21%, 11%);
+	--input-bg-color: hsl(235, 24%, 19%);
+	--border-color: hsl(234, 11%, 52%);
+	--text-primary-color: hsl(234, 39%, 85%);
+	--text-secondary-color: hsl(233, 14%, 35%);
+	--text-blur-color: hsl(234, 11%, 52%);
+	--shadow-color: #e4e5f1;
+	--checked-bg-color: linear-gradient(-45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+	--chkbg: 280, 87%, 65%;
+	--chkfg: 0, 0%, 98%;
+	--filter-color: hsl(220, 98%, 61%);
+	--desktop-image: url('/bg-desktop-dark.jpg');
+	--mobile-image: url('/bg-mobile-dark.jpg');
 }
 * {
 	font-family: 'Josefin Sans';
@@ -88,6 +105,7 @@ body {
 	border: none;
 	height: 50px;
 	color: var(--text-primary-color);
+	background-color: var(--input-bg-color);
 	font-size: 15px;
 	box-sizing: border-box;
 	width: 100%;
@@ -145,7 +163,7 @@ body {
 	position: relative;
 	font-size: 15px;
 	border-bottom: 1px solid var(--border-color);
-	background-color: var(--primary-bg-color);
+	background-color: var(--input-bg-color);
 }
 .todo-list li:first-child {
 	border-start-start-radius: 4px;
@@ -223,7 +241,7 @@ body {
 }
 
 .todo-list li.completed span {
-	color: #d9d9d9;
+	color: var(--border-color);
 	text-decoration: line-through;
 }
 
@@ -293,7 +311,7 @@ body {
 	transform: translate(50%, 50%);
 	right: 50vw;
 	bottom: 200px;
-	background-image: var(--input-bg-color);
+	background-color: var(--input-bg-color);
 	color: var(--text-secondary-color);
 	height: 50px;
 	font-size: 17px;
