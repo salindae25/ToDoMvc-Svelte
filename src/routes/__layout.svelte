@@ -16,11 +16,12 @@
 		width: 100%;
 		margin: 0 auto;
 		box-sizing: border-box;
-		background: url('/bg-desktop-light.jpg') no-repeat;
+		background: var(--desktop-image) no-repeat;
+		background-size: contain;
 	}
 	@media (max-width: 375px) {
 		main {
-			background: url('/bg-mobile-light.jpg') no-repeat;
+			background: var(--mobile-image) no-repeat;
 		}
 	}
 </style>
