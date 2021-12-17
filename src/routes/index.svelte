@@ -1,9 +1,12 @@
 <script>
+	import ThemeSelector from '$lib/ThemeSelector.svelte';
+
 	import Todo from '$lib/Todo.svelte';
 </script>
 
 <div class="learn-bar">
 	<section class="todoapp">
+		<ThemeSelector />
 		<Todo />
 	</section>
 	<!-- <footer class="info">

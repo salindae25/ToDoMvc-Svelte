@@ -59,7 +59,7 @@
 		/>
 		<label for={`toggle-item-${todo.id}`} />
 
-		<span on:dblclick={handleEdit}>{todo.title}</span>
+		<span on:dblclick={handleEdit} title={todo.title}>{todo.title}</span>
 		<button class="destroy" on:click={onDestroy} />
 	</div>
 	<Input

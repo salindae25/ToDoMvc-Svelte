@@ -53,7 +53,7 @@ body.dark-mode {
 	--text-primary-color: hsl(234, 39%, 85%);
 	--text-secondary-color: hsl(233, 14%, 35%);
 	--text-blur-color: hsl(234, 11%, 52%);
-	--shadow-color: #e4e5f1;
+	--shadow-color: hsl(237, 14%, 26%);
 	--checked-bg-color: linear-gradient(-45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 	--chkbg: 280, 87%, 65%;
 	--chkfg: 0, 0%, 98%;
@@ -90,7 +90,25 @@ body.dark-mode {
 .todoapp input::input-placeholder {
 	color: var(--text-blur-color);
 }
-
+.theme-switch {
+	display: flex;
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	right: 0;
+}
+.theme-switch > div {
+	width: 100%;
+	height: 100%;
+}
+.dark-icon {
+	background-image: url('icon-moon.svg');
+	background-repeat: no-repeat;
+}
+.light-icon {
+	background-image: url('icon-sun.svg');
+	background-repeat: no-repeat;
+}
 .header h1 {
 	color: #fff;
 	font-size: 32px;
@@ -165,6 +183,9 @@ body.dark-mode {
 	border-bottom: 1px solid var(--border-color);
 	background-color: var(--input-bg-color);
 }
+.todo-list li .view:hover {
+	background-color: var(--shadow-color);
+}
 .todo-list li:first-child {
 	border-start-start-radius: 4px;
 	border-start-end-radius: 4px;
@@ -233,11 +254,15 @@ body.dark-mode {
 }
 
 .todo-list li span {
-	word-break: break-all;
+	width: 500px;
+	white-space: nowrap;
 	padding: 15px 15px 15px 60px;
+	overflow: hidden;
+
 	display: block;
 	line-height: 1.2;
 	transition: color 0.4s;
+	text-overflow: ellipsis;
 }
 
 .todo-list li.completed span {
@@ -246,11 +271,10 @@ body.dark-mode {
 }
 
 .todo-list li .destroy {
-	display: none;
 	position: absolute;
-	top: 0;
+	cursor: pointer;
+	top: 5px;
 	right: 10px;
-	bottom: 0;
 	width: 40px;
 	height: 40px;
 	margin: auto 0;
@@ -260,12 +284,8 @@ body.dark-mode {
 	transition: color 0.2s ease-out;
 }
 
-.todo-list li .destroy:hover {
-	color: #af5b5e;
-}
-
 .todo-list li .destroy:after {
-	content: '×';
+	content: url('icon-cross.svg');
 }
 
 .todo-list li:hover .destroy {
