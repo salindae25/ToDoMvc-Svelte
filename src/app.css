@@ -102,11 +102,11 @@ body.dark-mode {
 	height: 100%;
 }
 .dark-icon {
-	background-image: url('icon-moon.svg');
+	background-image: url('/icon-moon.svg');
 	background-repeat: no-repeat;
 }
 .light-icon {
-	background-image: url('icon-sun.svg');
+	background-image: url('/icon-sun.svg');
 	background-repeat: no-repeat;
 }
 .header h1 {
